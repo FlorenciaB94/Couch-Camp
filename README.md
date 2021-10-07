@@ -1,7 +1,10 @@
 # Couch-Camp
-```
+
+
 An all inclusine app that will let you search for a movie and show which streaming platform it is currently on.
-```
+
+<img src = "assets\Images\couch camp logo.png">
+
 ## User Story
 
 ```
@@ -25,6 +28,8 @@ THEN the app will show if that streaming platform contains my selected movie
 ```
 ## Future Development
 
+```
+
 GIVEN I am using a movie serach app
 WHEN I open the app
 THEN I will be taken to the app/website
@@ -32,3 +37,5 @@ WHEN I click the save button for the movie I want to watch
 THEN the movie will save to my Watch List
 WHEN I create a profile 
 THEN I can be taken to a page that shows my profile and saved movies
+
+```
