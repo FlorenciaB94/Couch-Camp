@@ -1,3 +1,13 @@
+.couch-camp-hero {
+  background-color: #aa0d04;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  margin-left: -8px;
+  color: wheat;
+  text-align: left;
+}
+
 #couch-camp-logo {
-    display:block;
+  display: block;
 }
