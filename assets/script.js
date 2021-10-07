@@ -11,13 +11,17 @@ event.preventDefault();
 var movieTitle = input.value 
 console.log(movieTitle);
   // testing example fetch request
+
   console.log(``)
   fetch(`https://api.themoviedb.org/3/search/movie?api_key=${APIkey1}&query=${movieTitle}`)
+
+  fetch('https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com')
+
   .then(function (response) {
     return response.json();
   })
   .then(function (data) {
-    console.log('');
+    console.log('Moive Shown in:');
     console.log(data);
     getMoviePlatforms(data.results[0].id);
   });
