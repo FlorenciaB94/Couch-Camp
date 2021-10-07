@@ -1,33 +1,41 @@
 console.log(this);
-var showResults = document.getElementById("#results");
-var searchButton = document.getElementById("#search");
+var showResults = document.getElementById("results");
+var searchButton = document.getElementById("search");
+var input = document.getElementById("name");
+
+var APIkey1 = "b2603b30013667b374cd4d50875144c1"
 
 
-var APIkey1 = "&appid=35fec87f63msh0eb478548ed1ee9p19d869jsnd2a13d4daaf9"
-
-function getApi() {
-
+function getApi(event) {
+event.preventDefault();
+var movieTitle = input.value 
+console.log(movieTitle);
   // testing example fetch request
+
+  console.log(``)
+  fetch(`https://api.themoviedb.org/3/search/movie?api_key=${APIkey1}&query=${movieTitle}`)
+
   fetch('https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com')
+
   .then(function (response) {
     return response.json();
   })
   .then(function (data) {
     console.log('Moive Shown in:');
     console.log(data);
+    getMoviePlatforms(data.results[0].id);
   });
-
-  
-  
-  
-  
-  // (function (response) {
-    // return response.json();
-  // })
-  // .then(function (data) {
-  //   console.log(data)
-  // })
+ 
 };
-getApi();
-
-// searchButton.addEventListener('click', getApi);
+// get movie ID's for searching 
+function getMoviePlatforms(movieID){
+  fetch(`https://api.themoviedb.org/3/movie/${movieID}/watch/providers?api_key=b2603b30013667b374cd4d50875144c1`)
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (data) {
+    console.log('');
+    console.log(data);
+  });
+};
+searchButton.addEventListener('click', getApi);
