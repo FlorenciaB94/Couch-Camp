@@ -9,6 +9,48 @@
   <link rel="stylesheet" href="asstes/style.css">
 </head>
 
+<style>
+
+:root{
+    --dark-blue: #264653;
+    --blue: #2a9d8f;
+    --yellow: #e9c46a;
+    --orange: #f4a261;
+    --dark-orange: #e76f51;
+}
+
+#header{
+  background-color: var(--dark-orange);
+  border: 4px solid var(--yellow);
+}
+
+.button{
+color: white;
+background-color: var(--yellow);
+}
+
+#movie_card{
+border: 10px solid var(--dark-blue);
+border-color: var(--blue);
+font-family: Trebuchet MS, sans-serif;
+background-color: var(--blue);
+
+}
+
+#search_results_txt{
+  font-size: large;
+  
+}
+
+#load_more{
+  color: white;
+  background-color: var(--dark-blue);
+  margin-top: 15px;
+}
+
+</style>
+
+
 <body>
 
   <!-- Navigation -->
@@ -17,7 +59,7 @@
     <img id="couch-camp-logo" src="" alt="Couch Camp Logo" />
     <div class="top-bar-right">
       <ul class="menu">
-        <li><a href="#">My Movies</a></li>
+        <li><a class="button" href="#">My Movies</a></li>
         <li><a class="button">Login</a></li>
       </ul>
     </div>
@@ -34,7 +76,7 @@
           <div class="row">
             <div class="small-12 columns">
               <label>What do you want to watch?
-                <input type="text" placeholder="Search Movies">
+                <input id="name" type="text" placeholder="Search Movies">
               </label>
             </div>
             <div class="small-12 columns">
@@ -63,49 +105,49 @@
   </div>
 
   <div class="row column">
-    <p class="lead">Search Results:</p>
+    <p id="search_results_txt" class="lead">Search Results:</p>
   </div>
 
   <div class="row small-up-1 medium-up-2 large-up-3">
-    <div class="column">
-      <div id="moive_card" class="callout">
-        <p>"movie title placeholder"</p>
+    <div id="movie_card" class="column">
+      <div class="callout">
+        <h4>"movie title placeholder"</h4>
         <p><img src="" alt="image of movie poster"></p>
         <p class="lead">"movie description placeholder"</p>
       </div>
     </div>
-    <div id="moive_card" class="column">
+    <div id="movie_card" class="column">
       <div class="callout">
-        <p>"movie title placeholder"</p>
+        <h4>"movie title placeholder"</h4>
         <p><img src="" alt="image of movie poster"></p>
         <p class="lead">"movie description placeholder"</p>
       </div>
     </div>
-    <div id="moive_card" class="column">
+    <div id="movie_card" class="column">
       <div class="callout">
-        <p>"movie title placeholder"</p>
+        <h4>"movie title placeholder"</h4>
         <p><img src="" alt="image of movie poster"></p>
         <p class="lead">"movie description placeholder"</p>
       </div>
     </div>
-    <div id="moive_card" class="column">
+    <div id="movie_card" class="column">
       <div class="callout">
-        <p>"movie title placeholder"</p>
+        <h4>"movie title placeholder"</h4>
         <p><img src="" alt="image of movie poster"></p>
         <p class="lead">"movie description placeholder"</p>
       </div>
     </div>
-    <div id="moive_card" class="column">
+    <div id="movie_card" class="column">
       <div class="callout">
-        <p>"movie title placeholder"</p>
+        <h4>"movie title placeholder"</h4>
         <p><img src="" alt="image of movie poster"></p>
         <p class="lead">"movie description placeholder"</p>
       </div>
     </div>
-    <div id="moive_card" class="column">
+    <div id="movie_card" class="column">
       <div class="callout">
-        <p>"movie title placeholder"</p>
-        <p><img src="" alt="image of a planet called Pegasi B"></p>
+        <h4>"movie title placeholder"</h4>
+        <p><img src="" alt="image of movie poster"></p>
         <p class="lead">"movie description placeholder"</p>
       </div>
     </div>
@@ -113,7 +155,7 @@
   </div>
 
   <div class="row column">
-    <a class="button hollow expanded">Load More</a>
+    <a id="load_more" class="button hollow expanded">Load More</a>
   </div>
 
   <footer>
