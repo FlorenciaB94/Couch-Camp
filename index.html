@@ -9,19 +9,57 @@
   <link rel="stylesheet" href="assets/style.css">
 </head>
 
+<style>
+
+:root{
+    --dark-blue: #264653;
+    --blue: #2a9d8f;
+    --yellow: #e9c46a;
+    --orange: #f4a261;
+    --dark-orange: #e76f51;
+}
+
+#header{
+  background-color: var(--dark-orange);
+  border: 4px solid var(--yellow);
+}
+
+.button{
+color: white;
+background-color: var(--yellow);
+}
+
+#movie_card{
+border: 10px solid var(--dark-blue);
+border-color: var(--blue);
+font-family: Trebuchet MS, sans-serif;
+background-color: var(--blue);
+
+}
+
+#search_results_txt{
+  font-size: large;
+  
+}
+
+#load_more{
+  color: white;
+  background-color: var(--dark-blue);
+  margin-top: 15px;
+}
+
+</style>
+
+
 <body>
 
   <!-- Navigation -->
-  <div class="title-bar" data-responsive-toggle="header" data-hide-for="small">
-    <button class="menu-icon" type="button" data-toggle></button>
-    <div class="title-bar-title">Menu</div>
-  </div>
 
   <div class="top-bar" id="header">
     <img id="couch-camp-logo" src="" alt="Couch Camp Logo" />
     <div class="top-bar-right">
       <ul class="menu">
-        <li><a href="#">My Movies</a></li>
+        <li><a class="button" href="#">My Movies</a></li>
         <li><a class="button">Login</a></li>
       </ul>
     </div>
@@ -67,63 +105,57 @@
   </div>
 
   <div class="row column">
-    <p class="lead">Search Results:</p>
+    <p id="search_results_txt" class="lead">Search Results:</p>
   </div>
 
   <div class="row small-up-1 medium-up-2 large-up-3">
-    <div class="column">
+    <div id="movie_card" class="column">
       <div class="callout">
-        <p>Pegasi B</p>
-        <p><img src="" alt="image of a planet called Pegasi B"></p>
-        <p class="lead">Copernican Revolution caused an uproar</p>
-        <p class="subheader">Find Earth-like planets life outside the Solar System</p>
+        <h4>"movie title placeholder"</h4>
+        <p><img src="" alt="image of movie poster"></p>
+        <p class="lead">"movie description placeholder"</p>
       </div>
     </div>
-    <div class="column">
+    <div id="movie_card" class="column">
       <div class="callout">
-        <p>Pegasi B</p>
-        <p><img src="" alt="image of a planet called Pegasi B"></p>
-        <p class="lead">Copernican Revolution caused an uproar</p>
-        <p class="subheader">Find Earth-like planets life outside the Solar System</p>
+        <h4>"movie title placeholder"</h4>
+        <p><img src="" alt="image of movie poster"></p>
+        <p class="lead">"movie description placeholder"</p>
       </div>
     </div>
-    <div class="column">
+    <div id="movie_card" class="column">
       <div class="callout">
-        <p>Pegasi B</p>
-        <p><img src="" alt="image of a planet called Pegasi B"></p>
-        <p class="lead">Copernican Revolution caused an uproar</p>
-        <p class="subheader">Find Earth-like planets life outside the Solar System</p>
+        <h4>"movie title placeholder"</h4>
+        <p><img src="" alt="image of movie poster"></p>
+        <p class="lead">"movie description placeholder"</p>
       </div>
     </div>
-    <div class="column">
+    <div id="movie_card" class="column">
       <div class="callout">
-        <p>Pegasi B</p>
-        <p><img src="" alt="image of a planet called Pegasi B"></p>
-        <p class="lead">Copernican Revolution caused an uproar</p>
-        <p class="subheader">Find Earth-like planets life outside the Solar System</p>
+        <h4>"movie title placeholder"</h4>
+        <p><img src="" alt="image of movie poster"></p>
+        <p class="lead">"movie description placeholder"</p>
       </div>
     </div>
-    <div class="column">
+    <div id="movie_card" class="column">
       <div class="callout">
-        <p>Pegasi B</p>
-        <p><img src="" alt="image of a planet called Pegasi B"></p>
-        <p class="lead">Copernican Revolution caused an uproar</p>
-        <p class="subheader">Find Earth-like planets life outside the Solar System</p>
+        <h4>"movie title placeholder"</h4>
+        <p><img src="" alt="image of movie poster"></p>
+        <p class="lead">"movie description placeholder"</p>
       </div>
     </div>
-    <div class="column">
+    <div id="movie_card" class="column">
       <div class="callout">
-        <p>Pegasi B</p>
-        <p><img src="" alt="image of a planet called Pegasi B"></p>
-        <p class="lead">Copernican Revolution caused an uproar</p>
-        <p class="subheader">Find Earth-like planets life outside the Solar System</p>
+        <h4>"movie title placeholder"</h4>
+        <p><img src="" alt="image of movie poster"></p>
+        <p class="lead">"movie description placeholder"</p>
       </div>
     </div>
 
   </div>
 
   <div class="row column">
-    <a class="button hollow expanded">Load More</a>
+    <a id="load_more" class="button hollow expanded">Load More</a>
   </div>
 
   <footer>

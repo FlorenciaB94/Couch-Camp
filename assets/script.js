@@ -17,7 +17,7 @@ console.log(movieTitle);
     return response.json();
   })
   .then(function (data) {
-    console.log('');
+    console.log('Moive Shown in:');
     console.log(data);
     getMoviePlatforms(data.results[0].id);
   });
