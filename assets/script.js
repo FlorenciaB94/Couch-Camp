@@ -29,8 +29,10 @@ async function getMovies(movieTitle) {
 };
 
 // get movie ID's for searching 
+
 async function getMoviePlatforms(movieID){
   return await fetch(`https://api.themoviedb.org/3/movie/${movieID}/watch/providers?api_key=b2603b30013667b374cd4d50875144c1`)
+
   .then(function (response) {
     return response.json();
   })
