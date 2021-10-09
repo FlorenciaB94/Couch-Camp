@@ -39,3 +39,4 @@ function getMoviePlatforms(movieID){
   });
 };
 searchButton.addEventListener('click', getApi);
+
