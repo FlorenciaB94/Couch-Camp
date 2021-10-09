@@ -1,37 +1,70 @@
 console.log(this);
-var showResults = document.getElementById("results");
+var movieNameElem = document.getElementById("movie-title");
 var searchButton = document.getElementById("search");
 var input = document.getElementById("name");
 
 var APIkey1 = "b2603b30013667b374cd4d50875144c1"
 
 
-function getApi(event) {
-event.preventDefault();
-var movieTitle = input.value 
-console.log(movieTitle);
-  // testing example fetch request
-  console.log(``)
-  fetch(`https://api.themoviedb.org/3/search/movie?api_key=${APIkey1}&query=${movieTitle}`)
+// Movies API fetch request
+async function getMovies(movieTitle) {
+  
+  return await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${APIkey1}&query=${movieTitle}`)
   .then(function (response) {
     return response.json();
   })
   .then(function (data) {
-    console.log('Moive Shown in:');
-    console.log(data);
-    getMoviePlatforms(data.results[0].id);
+    var movieData = [];  
+    var movies = data.results;
+    for (var i = 0; i< movies.length; i++ ){
+      var movie = movies[i];
+        movieData.push(
+        {
+          movieId: movie.id,
+          movieTitle: movie.original_title,
+        })
+    }
+     return movieData;
   });
- 
 };
+
 // get movie ID's for searching 
-function getMoviePlatforms(movieID){
-  fetch(`https://api.themoviedb.org/3/movie/${movieID}/watch/providers?api_key=b2603b30013667b374cd4d50875144c1`)
+async function getMoviePlatforms(movieID){
+  return await fetch(`https://api.themoviedb.org/3/movie/${movieID}/watch/providers?api_key=b2603b30013667b374cd4d50875144c1`)
   .then(function (response) {
     return response.json();
   })
-  .then(function (data) {
-    console.log('');
-    console.log(data);
-  });
 };
-searchButton.addEventListener('click', getApi);
+
+async function fetchMovieData(event) {
+  event.preventDefault();
+// call getMovies function first
+  var movieData = await getMovies(input.value);
+
+  // then call getMoviePlatforms next
+  for (var i = 0; i <  movieData.length; i++) {
+    var streamingData = await getMoviePlatforms(movieData[i].movieId);
+    if (streamingData.results.length === 0) {
+      // do something
+    } else {
+      var streamingDataInUS = streamingData.results["US"];
+      var rent = streamingDataInUS?.rent || [];
+      var providers = [];
+      for (let j = 0; j < rent.length; j++){
+        providers.push(rent[j].provider_name);
+
+      }
+      movieData[i].providers = providers;
+
+    }
+  }
+
+  console.log("---- movie data after getting streaming data");
+  console.log(movieData)
+
+  // now we need to dynamically plug in  all the data we have in movideData to the cards on html
+
+}
+
+
+searchButton.addEventListener('click', fetchMovieData);
