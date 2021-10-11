@@ -3,8 +3,10 @@ var movieNameElem = document.getElementById("movie-title");
 var searchButton = document.getElementById("search");
 var input = document.getElementById("name");
 
+//key for TheMovieDatabase API
 var APIkey1 = "b2603b30013667b374cd4d50875144c1"
-
+//key for NYT reviews
+var APIkey2 = "1eWGISZRchA7XQkb0Mw5vUd1Age2qfKE"
 
 // Movies API fetch request
 async function getMovies(movieTitle) {
@@ -30,11 +32,37 @@ async function getMovies(movieTitle) {
 
 // get movie ID's for searching 
 async function getMoviePlatforms(movieID){
-  return await fetch(`https://api.themoviedb.org/3/movie/${movieID}/watch/providers?api_key=b2603b30013667b374cd4d50875144c1`)
+  return await fetch(`https://api.themoviedb.org/3/movie/${movieID}/watch/providers?api_key=${APIkey1}`)
   .then(function (response) {
     return response.json();
   })
 };
+// Reviews API fetch call
+
+async function getReviews(movieID) {
+
+  return await fetch(`https://api.nytimes.com/svc/movies/v2/reviews/search.json?&query=${movieID}&api-key=${APIkey2}`)
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (data) {
+    var reviewData = [];
+    var reviews = data.results;
+    for (var r = 0; r < results.length; r++){
+      var review = reviews[r];
+      movieData.push(
+        {
+          review: review.summary_short,
+        })
+    }
+    return reviewData;
+
+  });
+  };
+
+
+
+
 
 async function fetchMovieData(event) {
   event.preventDefault();
@@ -57,14 +85,42 @@ async function fetchMovieData(event) {
       movieData[i].providers = providers;
 
     }
-  }
-
-  console.log("---- movie data after getting streaming data");
-  console.log(movieData)
-
-  // now we need to dynamically plug in  all the data we have in movideData to the cards on html
-
+ 
 }
+console.log("---- movie data after getting streaming data");
+console.log(movieData)
+
+
+
+
+//  var reviewData = await getMovies(input.value);
+
+//  for (var r= 0; r < reviewData.length; r++){
+//      var reviewsContent = await getMoviePlatforms(movieData[i].movieId);
+//      if (reviewsContent.results.length === 0){
+//          // do something
+//        } else {
+//            var reviewsContentInUS = reviewsContent.results["summary_short"];
+//            var summary = reviewsContentInUS?.summary_short || [];
+//            var review = [];
+//            for (let s = 0; s < summary_short.length; s++){
+//                review.push(summary[s].summary_short);
+//              }
+//              movieData[i].review = review;
+//            }
+//          }
+//          console.log("-------movieData after reviewData")
+//          console.log(movieData)
+        
+        
+        // now we need to dynamically plug in  all the data we have in movideData to the cards on html
+    
+        var movieNameElem = document.getElementById("movie-title");
+        movieNameElem.innerHTML =  movieData.movieTitle[i];
+        console.log(movieNameElem);
+      }
+      
+
 
 
 searchButton.addEventListener('click', fetchMovieData);
