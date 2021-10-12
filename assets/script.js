@@ -15,7 +15,7 @@ async function getMovies(movieTitle) {
   .then(function (data) {
     var movieData = [];  
     var movies = data.results;
-    for (var i = 0; i< movies.length; i++ ){
+    for (var i = 0; i< 6; i++ ){
       var movie = movies[i];
         movieData.push(
         {
@@ -36,17 +36,16 @@ async function getMoviePlatforms(movieID){
     return response.json();
   })
   .then(function (data) {
-    var reviewData = [];
-    var reviews = data.results;
-    for (var r = 0; r < results.length; r++){
-      var review = reviews[r];
-      reviewData.push(
-        {
-          review: review.summary_short,
-        })
+    var linksToReviews = [];
+    console.log(data);
+    var reviews = data.results || [];
+    for (var r = 0; r < reviews.length; r++){
+      var review = reviews[r].link.url;
+      linksToReviews.push(review);
+    
     }
-    return reviewData;
-reviewData.push(movieData);
+    console.log(linksToReviews);
+    return linksToReviews;
   });
   };
 
@@ -60,7 +59,7 @@ async function fetchMovieData(event) {
   var movieData = await getMovies(input.value);
 
   // then call getMoviePlatforms next
-  for (var i = 0; i <  movieData.length; i++) {
+  for (var i = 0; i <  6; i++) {
     var streamingData = await getMoviePlatforms(movieData[i].movieId);
     if (streamingData.results.length === 0) {
       // do something
@@ -77,35 +76,19 @@ async function fetchMovieData(event) {
     }
   }
  
+}
+console.log("---- movie data after getting streaming data");
+console.log(movieData)
 
-
-//  var reviewData = await getMovies(input.value);
-
-//  for (var r= 0; r < reviewData.length; r++){
-//      var reviewsContent = await getMoviePlatforms(movieData[i].movieId);
-//      if (reviewsContent.results.length === 0){
-//          // do something
-//        } else {
-//            var reviewsContentInUS = reviewsContent.results["summary_short"];
-//            var summary = reviewsContentInUS?.summary_short || [];
-//            var review = [];
-//            for (let s = 0; s < summary_short.length; s++){
-//                review.push(summary[s].summary_short);
-//              }
-//              movieData[i].review = review;
-//            }
-//          }
-//          console.log("-------movieData after reviewData")
-//          console.log(movieData)
-        
+ for (var r= 0; r < 6; r++){
+  console.log("------------review Data stuff"); 
+  console.log(movieData[r]);
+     var reviewsContent = await getReviews(movieData[r].movieTitle);
+         console.log(movieData);
+        movieData[r].review = reviewsContent;
         
         // now we need to dynamically plug in  all the data we have in movieData to the cards on html
-    
-        var movieNameElem = document.getElementById("movie-title");
-        for(m = 0; m < movieData.length; m++){
-          movieNameElem.innerHTML =  movieData[m].movieTitle;
-          console.log(movieNameElem);
-        }
+  
       }
       
 
