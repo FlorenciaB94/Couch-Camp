@@ -40,7 +40,7 @@ async function getMoviePlatforms(movieID){
 
 async function fetchMovieData(event) {
   event.preventDefault();
-// call getMovies function first
+  // call getMovies function first
   var movieData = await getMovies(input.value);
 
   // then call getMoviePlatforms next
@@ -53,16 +53,15 @@ async function fetchMovieData(event) {
       var rent = streamingDataInUS?.rent || [];
       var providers = [];
       for (let j = 0; j < rent.length; j++){
-        providers.push(rent[j].provider_name);
+        providers.push(rent[j].provider_name)
 
       }
       movieData[i].providers = providers;
 
     }
   }
+ 
 
-  console.log("---- movie data after getting streaming data");
-  console.log(movieData)
 
   // now we need to dynamically plug in  all the data we have in movideData to the cards on html
 

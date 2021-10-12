@@ -1,6 +1,5 @@
 # Couch-Camp
 
-
 An all inclusine app that will let you search for a movie and show which streaming platform it is currently on.
 
 <img src = "assets\Images\couch camp logo.png">
@@ -39,3 +38,7 @@ WHEN I create a profile
 THEN I can be taken to a page that shows my profile and saved movies
 
 ```
+## Deployment
+
+[Active Page](https://florenciab94.github.io/Couch-Camp/)
+[Github](https://github.com/FlorenciaB94/Couch-Camp)
