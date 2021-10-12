@@ -96,10 +96,11 @@ console.log(movieData)
         movieData[r].review = reviewsContent;
         
         // now we need to dynamically plug in  all the data we have in movieData to the cards on html
-    for 
-      }
+  
       
 
 
-
+ }
 searchButton.addEventListener('click', fetchMovieData);
+ 
+}
