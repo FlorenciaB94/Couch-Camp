@@ -1,6 +1,7 @@
 console.log(this);
 var searchButton = document.getElementById("search");
 var input = document.getElementById("name");
+var cardRow = document.getElementById('card_row');
 
 //key for TheMovieDatabase API
 var APIkey1 = "b2603b30013667b374cd4d50875144c1"
@@ -56,7 +57,7 @@ async function getReviews(movieID) {
     console.log(linksToReviews);
     return linksToReviews;
   });
-  };
+};
 
 
 
@@ -64,6 +65,7 @@ async function getReviews(movieID) {
 
 async function fetchMovieData(event) {
   event.preventDefault();
+  cardRow.innerHTML = "";
 // call getMovies function first
   var movieData = await getMovies(input.value);
 
@@ -84,9 +86,10 @@ async function fetchMovieData(event) {
 
     }
  
-}
-console.log("---- movie data after getting streaming data");
-console.log(movieData)
+  }
+
+  console.log("---- movie data after getting streaming data");
+  console.log(movieData)
 
  for (var r= 0; r < 6; r++){
   console.log("------------review Data stuff"); 
@@ -96,8 +99,10 @@ console.log(movieData)
         movieData[r].review = reviewsContent;
         
         // now we need to dynamically plug in  all the data we have in movieData to the cards on html
-    for 
-      }
+        cardRow.innerHTML += `<div class="movie_card column"><div class="callout"><h4>${movieData[r].movieTitle}</h4><p class="lead"></p><a href="${movieData[r].review[0]}" target="_blank"><p>review</p></a></div></div>`;
+      } 
+
+}
       
 
 
