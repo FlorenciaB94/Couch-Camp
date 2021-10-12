@@ -1,5 +1,4 @@
 console.log(this);
-var movieNameElem = document.getElementById("movie-title");
 var searchButton = document.getElementById("search");
 var input = document.getElementById("name");
 
@@ -50,13 +49,13 @@ async function getReviews(movieID) {
     var reviews = data.results;
     for (var r = 0; r < results.length; r++){
       var review = reviews[r];
-      movieData.push(
+      reviewData.push(
         {
           review: review.summary_short,
         })
     }
     return reviewData;
-
+reviewData.push(movieData);
   });
   };
 
@@ -113,11 +112,13 @@ console.log(movieData)
 //          console.log(movieData)
         
         
-        // now we need to dynamically plug in  all the data we have in movideData to the cards on html
+        // now we need to dynamically plug in  all the data we have in movieData to the cards on html
     
         var movieNameElem = document.getElementById("movie-title");
-        movieNameElem.innerHTML =  movieData.movieTitle[i];
-        console.log(movieNameElem);
+        for(m = 0; m < movieData.length; m++){
+          movieNameElem.innerHTML =  movieData[m].movieTitle;
+          console.log(movieNameElem);
+        }
       }
       
 
