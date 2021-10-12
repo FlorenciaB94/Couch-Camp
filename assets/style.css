@@ -1,5 +1,7 @@
 
 :root{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size:medium ;
     --dark-blue: #264653;
     --blue: #2a9d8f;
     --yellow: #e9c46a;
