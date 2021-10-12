@@ -74,11 +74,24 @@ async function fetchMovieData(event) {
       movieData[i].providers = providers;
 
     }
+<<<<<<< HEAD
   }
+=======
+
+  }
+ 
+
+>>>>>>> 48f5f9092d7344816feb55791d8b94baa714598b
  
 }
 console.log("---- movie data after getting streaming data");
 console.log(movieData)
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> 48f5f9092d7344816feb55791d8b94baa714598b
 
  for (var r= 0; r < 6; r++){
   console.log("------------review Data stuff"); 
