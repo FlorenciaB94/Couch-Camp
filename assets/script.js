@@ -1,5 +1,4 @@
 console.log(this);
-var movieNameElem = document.getElementById("movie-title");
 var searchButton = document.getElementById("search");
 var input = document.getElementById("name");
 
@@ -36,7 +35,24 @@ async function getMoviePlatforms(movieID){
   .then(function (response) {
     return response.json();
   })
-};
+  .then(function (data) {
+    var reviewData = [];
+    var reviews = data.results;
+    for (var r = 0; r < results.length; r++){
+      var review = reviews[r];
+      reviewData.push(
+        {
+          review: review.summary_short,
+        })
+    }
+    return reviewData;
+reviewData.push(movieData);
+  });
+  };
+
+
+
+
 
 async function fetchMovieData(event) {
   event.preventDefault();
@@ -63,7 +79,35 @@ async function fetchMovieData(event) {
  
 
 
-  // now we need to dynamically plug in  all the data we have in movideData to the cards on html
+//  var reviewData = await getMovies(input.value);
+
+//  for (var r= 0; r < reviewData.length; r++){
+//      var reviewsContent = await getMoviePlatforms(movieData[i].movieId);
+//      if (reviewsContent.results.length === 0){
+//          // do something
+//        } else {
+//            var reviewsContentInUS = reviewsContent.results["summary_short"];
+//            var summary = reviewsContentInUS?.summary_short || [];
+//            var review = [];
+//            for (let s = 0; s < summary_short.length; s++){
+//                review.push(summary[s].summary_short);
+//              }
+//              movieData[i].review = review;
+//            }
+//          }
+//          console.log("-------movieData after reviewData")
+//          console.log(movieData)
+        
+        
+        // now we need to dynamically plug in  all the data we have in movieData to the cards on html
+    
+        var movieNameElem = document.getElementById("movie-title");
+        for(m = 0; m < movieData.length; m++){
+          movieNameElem.innerHTML =  movieData[m].movieTitle;
+          console.log(movieNameElem);
+        }
+      }
+      
 
 }
 
