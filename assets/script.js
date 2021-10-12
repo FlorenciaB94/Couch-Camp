@@ -2,8 +2,10 @@ console.log(this);
 var searchButton = document.getElementById("search");
 var input = document.getElementById("name");
 
+//key for TheMovieDatabase API
 var APIkey1 = "b2603b30013667b374cd4d50875144c1"
-
+//key for NYT reviews
+var APIkey2 = "1eWGISZRchA7XQkb0Mw5vUd1Age2qfKE"
 
 // Movies API fetch request
 async function getMovies(movieTitle) {
@@ -28,10 +30,17 @@ async function getMovies(movieTitle) {
 };
 
 // get movie ID's for searching 
-
 async function getMoviePlatforms(movieID){
-  return await fetch(`https://api.themoviedb.org/3/movie/${movieID}/watch/providers?api_key=b2603b30013667b374cd4d50875144c1`)
+  return await fetch(`https://api.themoviedb.org/3/movie/${movieID}/watch/providers?api_key=${APIkey1}`)
+  .then(function (response) {
+    return response.json();
+  })
+};
+// Reviews API fetch call
 
+async function getReviews(movieID) {
+
+  return await fetch(`https://api.nytimes.com/svc/movies/v2/reviews/search.json?&query=${movieID}&api-key=${APIkey2}`)
   .then(function (response) {
     return response.json();
   })
@@ -55,7 +64,7 @@ async function getMoviePlatforms(movieID){
 
 async function fetchMovieData(event) {
   event.preventDefault();
-  // call getMovies function first
+// call getMovies function first
   var movieData = await getMovies(input.value);
 
   // then call getMoviePlatforms next
@@ -68,30 +77,16 @@ async function fetchMovieData(event) {
       var rent = streamingDataInUS?.rent || [];
       var providers = [];
       for (let j = 0; j < rent.length; j++){
-        providers.push(rent[j].provider_name)
+        providers.push(rent[j].provider_name);
 
       }
       movieData[i].providers = providers;
 
     }
-<<<<<<< HEAD
-  }
-=======
-
-  }
- 
-
->>>>>>> 48f5f9092d7344816feb55791d8b94baa714598b
  
 }
 console.log("---- movie data after getting streaming data");
 console.log(movieData)
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> 48f5f9092d7344816feb55791d8b94baa714598b
 
  for (var r= 0; r < 6; r++){
   console.log("------------review Data stuff"); 
@@ -101,11 +96,10 @@ console.log(movieData)
         movieData[r].review = reviewsContent;
         
         // now we need to dynamically plug in  all the data we have in movieData to the cards on html
-  
+    for 
       }
       
 
-}
 
 
 searchButton.addEventListener('click', fetchMovieData);
