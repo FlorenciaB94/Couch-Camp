@@ -59,7 +59,6 @@ flex-wrap: wrap;
 
 p{
 font-family: 'Crimson Text', serif;
-text-decoration: underline ;
 font-weight: 200;
 color:black;
 text-align: center;
@@ -109,4 +108,16 @@ color: #0a0a0a;
   position: inherit;
   background-color: #fff;
   border-width: medium;
+}
+
+.reviews_decoration p{
+  text-decoration: underline;
+  text-decoration-color: blue;
+  color: blue;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+#providers-font{
+  font-size: 20px;
+  font-family: 'Times New Roman', Times, serif;
 }
