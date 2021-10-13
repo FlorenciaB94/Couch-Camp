@@ -102,7 +102,11 @@ async function fetchMovieData(event) {
     // now we need to dynamically plug in  all the data we have in movieData to the cards on html
 
 
+<<<<<<< HEAD
     cardRow.innerHTML += `<div class="movie_card column"><div class="callout"><h4>${movieData[r].movieTitle}</h4><p class="lead"><h4>${movieData[r].providers}</h4></p><a href="${movieData[r].review[0]}" target="_blank"><p>REVIEW</p></a></div></div>`;
+=======
+    cardRow.innerHTML += `<div class="movie_card column"><div class="callout"><h4>${movieData[r].movieTitle}</h4><h4>You can fin this movie on:</h4><p class="lead">${movieData[r].providers}</h4></p><a href="${movieData[r].review[0]}" target="_blank"><p>REVIEW</p></a></div></div>`;
+>>>>>>> 54723286a0d9665b985e7dcea421c42da3e4b541
   }  
 }
 searchButton.addEventListener('click', fetchMovieData);

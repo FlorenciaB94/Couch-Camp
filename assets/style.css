@@ -110,3 +110,8 @@ color: #0a0a0a;
   background-color: #fff;
   border-width: medium;
 }
+.review{
+  font-size: larger;
+  color: blue;
+  text-decoration: underline;
+}
