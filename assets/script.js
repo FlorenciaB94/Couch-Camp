@@ -115,8 +115,8 @@ async function fetchMovieData(event) {
          console.log(movieData);
         movieData[r].review = reviewsContent;
        // now we need to dynamically plug in  all the data we have in movieData to the cards on html
-  cardRow.innerHTML += `<div class="movie_card column"><div class="callout"><h4>${movieData[r].movieTitle}</h4><h4>You can fin this movie on:</h4><p class="lead">${movieData[r].providers}</h4></p><a href="${movieData[r].review[0]}" target="_blank"><p>REVIEW</p></a></div></div>`;
-}  
+       cardRow.innerHTML += `<div class="movie_card column"><div class="callout" id="movie-title-decoration"><h3>${movieData[r].movieTitle}</h3><div><h4>You can find this movie on:</h4><p class="lead" id="providers-font">${movieData[r].providers}</h4></div><div class="reviews_decoration"></p><a href="${movieData[r].review[0]}" target="_blank"><p>REVIEW</p></a></div></div></div>`;
+      }  
       }
 // Poster Data
 //  for (var p=0; p < 6; p++){
